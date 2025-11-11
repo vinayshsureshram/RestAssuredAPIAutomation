@@ -16,7 +16,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 echo "📦 Checking out code from Git..."
-                git branch: 'main', url: 'https://github.com/vinayshsureshram/SeleniumWebAutomation.git'
+                git branch: 'main', url: 'https://github.com/vinayshsureshram/RestAssuredAPIAutomation.git'
             }
         }
 
@@ -26,7 +26,7 @@ pipeline {
                 // Retry mechanism for transient issues
                 retry(2) {
                     catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
-                        sh 'mvn clean test -DsuiteXmlFile=testng.xml'
+                        sh 'mvn clean test'
                     }
                 }
             }
